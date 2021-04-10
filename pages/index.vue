@@ -1,17 +1,26 @@
 <template>
-  <div class="container">
-    <h1>你好</h1>
+  <div class="index-page-wrap">
+    <div class="page-cneter-wrap cneter-1200"></div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  mounted() {},
+  head() {
+    return {
+      title: "Hello,world",
+    };
+  },
+};
 </script>
 
 <style lang="less" scoped>
-.container{
-  h1{
-    color: red;
+.index-page-wrap {
+  background-color: #fff;
+  .page-cneter-wrap {
+    height: 200px;
+    background: linear-gradient(to bottom, #6dd5ed, #2193b0);
   }
 }
 </style>
