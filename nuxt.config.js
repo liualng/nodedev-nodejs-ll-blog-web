@@ -1,4 +1,5 @@
-export default {
+ module.exports = { 
+  telemetry:false,
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'nodejs-ll-blog-web',
@@ -41,5 +42,11 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     transpile: [/^element-ui/],
+  },
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true
+    }
   }
 }

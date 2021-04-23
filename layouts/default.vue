@@ -1,15 +1,11 @@
 <template>
   <div>
-    <color-select />
     <Nuxt />
   </div>
 </template>
 <script>
-import colorSelect from "~/components/common/colors-bg.vue";
 export default {
-  components: {
-    colorSelect,
-  },
+  components: {},
 };
 </script>
 <style>

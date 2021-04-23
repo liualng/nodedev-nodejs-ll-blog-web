@@ -1,6 +1,6 @@
 <template>
   <div class="index-page-wrap">
-    <div class="page-cneter-wrap cneter-1200"></div>
+    <h1>我是首页</h1>
   </div>
 </template>
 
@@ -18,9 +18,6 @@ export default {
 <style lang="less" scoped>
 .index-page-wrap {
   background-color: #fff;
-  .page-cneter-wrap {
-    height: 200px;
-    background: linear-gradient(to bottom, #6dd5ed, #2193b0);
-  }
+
 }
 </style>
