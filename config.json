@@ -2,5 +2,8 @@
   "port":4399,
   "dev":true,
   "projectName":"nodejs-ll-blog-web",
-  "baseUrl":"liulang.com"
+  "baseUrl":"liulang.com",
+  "mongodbBaseUrl":"mongodb://root:123456@127.0.0.1:27017/",
+  "mongodbAuthSource":"admin",
+  "iconFontCssUrl":"http://at.alicdn.com/t/font_2509072_cnzu0st5u4g.css"
 }

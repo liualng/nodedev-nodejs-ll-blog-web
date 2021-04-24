@@ -13,11 +13,13 @@ export const actions = {
   nuxtServerInit({ commit }, { req, res }) {
     const {
       projectName,
-      baseUrl
+      baseUrl,
+      iconFontCssUrl
     } = req.app.locals.config;
     commit('init', {
       projectName,
-      baseUrl
+      baseUrl,
+      iconFontCssUrl
     });
   },
 };

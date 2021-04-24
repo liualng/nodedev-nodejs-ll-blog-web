@@ -1,15 +1,18 @@
 <template>
   <div class="index-page-wrap">
-    <h1>我是首页</h1>
+    <index />
   </div>
 </template>
 
 <script>
+import index from "~/components/index/index.vue";
 export default {
-  mounted() {},
+  components: {
+    index,
+  },
   head() {
     return {
-      title: "Hello,world",
+      title: "liulang's blog",
     };
   },
 };
@@ -18,6 +21,5 @@ export default {
 <style lang="less" scoped>
 .index-page-wrap {
   background-color: #fff;
-
 }
 </style>

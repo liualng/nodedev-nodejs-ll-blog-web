@@ -9,6 +9,11 @@ import index from '~/components/login/index.vue';
 export default {
   components:{
     index
+  },
+  head(){
+    return {
+      title:"用户登陆与注册"
+    }
   }
 };
 </script>

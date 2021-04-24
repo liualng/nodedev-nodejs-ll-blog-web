@@ -3,15 +3,26 @@ const {
   Nuxt,
   Builder
 } = require('nuxt');
-const config = require('../config.json');
+const config = require('./config.json');
 const PORT = config.port || 3000;
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const app = express();
 
-const api = require('../routes/api/index');
-const router = require('../routes/index');
+
+// connect to mongodb
+const mongodbUrl = config.mongodbBaseUrl + `users?authSource=${config.mongodbAuthSource}`;
+mongoose.connect(mongodbUrl, {
+  useNewUrlParser: true
+}).then(() => {
+  console.log('数据库连接成功')
+}).catch(err => {
+  console.log(err, '数据库连接失败')
+});
+
+const userApi = require('./routes/api/users');
+const router = require('./routes/index');
 
 // session
 app.use(session({
@@ -35,26 +46,33 @@ app.use(cookieParser());
 app.use((req, res, next) => {
   const {
     projectName,
-    baseUrl
+    baseUrl,
+    iconFontCssUrl
   } = config;
   req.app = {
     locals: {
       config: {
         projectName,
-        baseUrl
+        baseUrl,
+        iconFontCssUrl
       }
     }
   };
   next();
 })
 
-// api
-app.use(api)
+/**
+ * API
+ */
+/**
+ * 用户操作API
+ */
+app.use('/api/users', userApi)
 // 自定义路由
 app.use('/', router)
 
 // 构建nuxt对象
-const nuxtConfig = require('../nuxt.config');
+const nuxtConfig = require('./nuxt.config');
 const nuxt = new Nuxt(nuxtConfig);
 
 // 是否启用开发模式

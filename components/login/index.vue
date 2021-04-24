@@ -28,12 +28,21 @@
         id="name"
         v-model="username"
         placeholder="Enter Name"
+        @keyup.enter="submitLogin"
       />
       <input
         type="password"
         id="pwd"
         v-model="userpwd"
         placeholder="Enter Password"
+        @keyup.enter="submitLogin"
+      />
+      <input
+        v-show="typeNum"
+        type="email"
+        v-model="useremail"
+        placeholder="Enter Email"
+        @keyup.enter="submitLogin"
       />
       <div class="submit-login" @click="submitLogin">
         {{ types[typeNum].btnText }}
@@ -48,6 +57,7 @@ export default {
     return {
       username: "",
       userpwd: "",
+      useremail: "",
       types: [
         {
           title: "Login In",
@@ -62,19 +72,21 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$store.state);
+    console.log(this);
   },
   methods: {
     setTypeNum(num = 0) {
       this.typeNum = num;
     },
     submitLogin() {
-      const { username, userpwd } = this;
+      const { username, userpwd, useremail } = this;
       let mes = "";
       if (!username) {
         mes = "请输入账号";
       } else if (!userpwd) {
         mes = "请输入密码";
+      } else if (this.typeNum && !useremail) {
+        mes = "请输入邮箱";
       }
       if (mes) {
         this.$message({
@@ -86,9 +98,10 @@ export default {
       // 登陆
       if (this.typeNum === 0) {
         this.$axios
-          .post(`http://${this.$store.state.baseUrl}/loginaccount`, {
+          .post(`http://${this.$store.state.baseUrl}/api/users/login`, {
             username,
             userpwd,
+            useremail,
           })
           .then(({ data }) => {
             if (data.success) {
@@ -112,9 +125,10 @@ export default {
       } else if (this.typeNum === 1) {
         // 注册
         this.$axios
-          .post(`http://${this.$store.state.baseUrl}/registeraccount`, {
+          .post(`http://${this.$store.state.baseUrl}/api/users/register`, {
             username,
             userpwd,
+            useremail,
           })
           .then(({ data }) => {
             if (data.success) {

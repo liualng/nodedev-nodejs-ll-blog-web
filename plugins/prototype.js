@@ -1,4 +1,6 @@
-import Vue from 'vue'
+import Vue from 'vue';
+console.log("fdsf")
+console.log(Vue)
 /**
  * @param phone 手机号码
  * @returns {boolean}

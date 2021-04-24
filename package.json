@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "node app.js",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
@@ -16,7 +16,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mongoose": "^5.12.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "vue": "^2.6.12"
   },
   "devDependencies": {
     "less": "^3.13.1",

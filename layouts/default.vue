@@ -6,6 +6,17 @@
 <script>
 export default {
   components: {},
+  head() {
+    return {
+      link: [
+        {
+          rel: "stylesheet",
+          type: "text/css",
+          href: this.$store.state.iconFontCssUrl,
+        },
+      ],
+    };
+  },
 };
 </script>
 <style>
@@ -30,10 +41,6 @@ html {
 
 a {
   text-transform: none;
-}
-
-.center-1200 {
-  width: 1200px;
-  margin: 0 auto;
+  text-decoration:none;
 }
 </style>
