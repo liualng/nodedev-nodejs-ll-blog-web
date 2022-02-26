@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-echo "推送环境:${ENV}"
+echo "启动服务..."
 
 # 切换nodejs版本
-nvm use 10.16.2
+echo "nvm use 14.18.3"
+nvm use 14.28.3
+node -v
 
 # 依赖安装
 npm install
@@ -18,6 +20,7 @@ else
 fi
 
 # 资源编译
+echo "npm run build"
 npm run build
 if [ $? -eq 0 ];then
     echo "============================================="
@@ -31,8 +34,21 @@ else
     echo "============================================="
     exit 1;
 fi
+echo "npm run build"
 # 开启服务
 npm run start
+if [ $? -eq 0 ];then
+    echo "============================================="
+    echo "服务开启成功!"
+    echo `date +%s` > ./md5
+    echo `date +%s` > ./release
+    echo "============================================="
+else
+    echo "============================================="
+    echo "服务开启失败!"
+    echo "============================================="
+    exit 1;
+fi
 
 
 
