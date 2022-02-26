@@ -14,12 +14,13 @@ export const actions = {
     const {
       projectName,
       baseUrl,
-      iconFontCssUrl
+      iconFontCssUrl,runtime
     } = req.app.locals.config;
     commit('init', {
       projectName,
       baseUrl,
-      iconFontCssUrl
+      iconFontCssUrl,
+      runtime
     });
   },
 };

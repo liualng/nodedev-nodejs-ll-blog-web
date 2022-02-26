@@ -1,6 +1,6 @@
 {
   "port":4399,
-  "dev":true,
+  "runtime": "local",
   "projectName":"nodejs-ll-blog-web",
   "baseUrl":"liulang.com",
   "mongodbBaseUrl":"mongodb://root:123456@127.0.0.1:27017/",

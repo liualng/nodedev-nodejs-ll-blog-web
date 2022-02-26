@@ -41,47 +41,24 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 
-
-// 设置配置数据
 app.use((req, res, next) => {
-  const {
-    projectName,
-    baseUrl,
-    iconFontCssUrl
-  } = config;
-  req.app = {
-    locals: {
-      config: {
-        projectName,
-        baseUrl,
-        iconFontCssUrl
-      }
-    }
-  };
+  console.log(`method:${req.method}  url:${req.originalUrl}`);
+  req.app = { locals: { config } }
   next();
 })
 
-/**
- * API
- */
-/**
- * 用户操作API
- */
+
 app.use('/api/users', userApi)
-// 自定义路由
 app.use('/', router)
 
-// 构建nuxt对象
+
 const nuxtConfig = require('./nuxt.config');
 const nuxt = new Nuxt(nuxtConfig);
-
-// 是否启用开发模式
-if (config.dev) {
+if (process.env.NODE_ENV !== 'production') {
   const builder = new Builder(nuxt);
-  builder.build();
+  builder.build()
 }
 
-// 自定义路由写在上面
 app.use(nuxt.render);
 
 app.listen(PORT, () => {
